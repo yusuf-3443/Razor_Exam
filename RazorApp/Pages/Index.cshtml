@@ -1,0 +1,89 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+    background-color: #dee9ff;
+            color: #333;
+            text-align: center;
+        }
+
+        .navbar {
+            background-color: #007bff;
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            width: 100%;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #cce5ff;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .container {
+            padding: 50px;
+
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #007bff;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-bottom: 20px;
+        }
+
+        /* Определение анимации */
+        @Component spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <!-- Изображение с внешнего сайта -->
+    <img src="images/images.png" alt="Logo" class="logo">
+    <h1>Welcome</h1>
+    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

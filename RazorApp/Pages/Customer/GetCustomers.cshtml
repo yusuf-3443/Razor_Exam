@@ -1,0 +1,167 @@
+@page
+@model GetCustomersModel
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>@ViewData["Title"]</title>
+    <a href="/Customer/CreateCustomer" class="btn btn-primary btnnn">Add Customer</a>
+      <form method="get">
+        <div class="form-group">
+            <input type="text" class="form-control" asp-for="Filter.Name" placeholder="Search by Customer Name">
+        </div>
+        <button type="submit" class="btn btn-info">Search</button>
+    </form>
+    <style>
+       
+        .form-control
+        {
+            margin-top: 11px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+    background-color: #dee9ff;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #007bff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .ullo {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            
+        }
+
+        .tropic {
+            width: 32%;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            align-items: center;
+            text-align: center;
+            border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+        }
+
+        li:hover {
+            background-color: rgb(217, 215, 215);
+        }
+
+        .Customer-id,
+        .Customer-name,
+        .Customer-date {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .Customer-id {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 10px;
+            justify-content: space-evenly;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-info {
+            background-color: #17a2b8;
+            color: #fff;
+        }
+
+        .btn-info:hover {
+            background-color: #138496;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        .pagination
+        {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+        .page-link
+        {
+            padding: 10px 15px;
+            border-radius: 5px;
+            border: 2px solid rgb(167, 165, 165);
+            font-weight: bold;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+<h1>@ViewData["Title"]</h1>
+
+<ul class="ullo">
+    @foreach (var Customer in Model.Customers)
+    {
+        <li class="tropic">
+            <div>
+                <span class="Customer-id">ID:</span> @Customer.Id <br/>
+                <span class="Customer-name">Customer Name:</span> @Customer.Name <br/>
+                <span class="Customer-date">Email</span> @Customer.Email <br/>
+                <span class="Customer-date">Address</span> @Customer.Address<br/>
+                                <span class="Customer-date">Phone Number</span> @Customer.PhoneNumber<br/>
+
+            </div>
+            <div class="btn-container">
+                <a href="/Customer/GetCustomerById?id=@Customer.Id" class="btn btn-info">View</a>
+               <a asp-page="/Customer/UpdateCustomer" asp-route-id="@Customer.Id" class="btn btn-primary">Update</a>
+                <a href="/Customer/DeleteCustomer?id=@Customer.Id" class="btn btn-danger">Delete</a>
+            </div>
+        </li>
+    }
+</ul>
+
+  @if (Model.TotalPages > 1)
+    {
+        <div class="pagination-container">
+            <nav>
+                <ul class="pagination">
+                    @for (var i = 1; i <= Model.TotalPages; i++)
+                    {
+                        <li class="page-item @(Model.Filter.PageNumber == i ? "active" : "")">
+                            <a class="page-link" asp-page="./GetCustomers" asp-route-PageNumber="@i">@i</a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
+
+</body>
+</html>

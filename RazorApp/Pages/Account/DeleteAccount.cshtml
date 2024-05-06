@@ -1,0 +1,92 @@
+@page
+@model RazorApp.Pages.Account.DeleteAccountModel
+@{
+    ViewData["Title"] = "Delete Account";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <style>
+        /* Styles for the delete account page */
+        body {
+            background-color: #dee9ff;
+        }
+
+        .registration-form {
+            padding: 50px 0;
+        }
+
+        .registration-form form {
+            background-color: #fff;
+            max-width: 600px;
+            margin: auto;
+            padding: 50px 70px;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+        }
+
+        .registration-form h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .registration-form .item {
+            border-radius: 20px;
+            margin-bottom: 25px;
+            padding: 10px 20px;
+        }
+
+        .create-account {
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .create-account:hover {
+            border: 4px solid #a10313;
+        }
+
+        .create-cancel {
+            border-radius: 30px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            background-color: rgb(4, 212, 4);
+            border: none;
+            color: white;
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .create-cancel:hover {
+            border: 4px solid rgb(1, 124, 1);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="registration-form">
+        <form method="post">
+            <h1>@ViewData["Title"]</h1>
+
+            <input type="hidden" asp-for="Id" />
+            <p>Are you sure you want to delete this account?</p>
+            <button type="submit" class="btn btn-block create-account">Delete</button>
+            <a asp-page="/Account/GetAccounts" class="btn btn-block create-cancel">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>
